@@ -4,12 +4,12 @@ public class Main {
         HerdingDog Fluffy = new HerdingDog("Fluffy");
         HerdingDog Maisel = new HerdingDog("Maisel");
         TrackingDog Duke = new TrackingDog("Duke");
-        Car myCar = new Car();
-        Car helensCar = new Car();
+        Car myCar = new Car("Dinky", "red", "Dodge", "Charger");
+        Car helensCar = new Car("Dinky2", "blue", "Nissan", "Ultima");
         System.out.println();
-        myCar.repaint("Dinky", "red", "Dodge", "Charger");
+        myCar.repaint();
         System.out.println();
-        helensCar.repaint("Dinky2", "blue", "Nissan", "Ultima");
+        helensCar.repaint();
         System.out.println();
 
         Rufus.bark();
