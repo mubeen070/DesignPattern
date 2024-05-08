@@ -28,6 +28,7 @@ public class Demo {
       Shape shape6 = shapeFactory1.getShape("TRIANGLE");
       // call draw method of Shape Square
       shape6.draw();
+      
       System.out.println();
       // get shape factory
       AbstractFactory shapeFactory2 = FactoryProducer.getFactory("bordered");
