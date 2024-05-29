@@ -12,7 +12,7 @@ public class Demo {
 		TriangleGeometry triangleGeometry = new TriangleGeometry();
 		
 		shapes.add(cricleGeomerty.createShape());
-		shapes.add(squareGeometry.createShape());
+		//shapes.add(squareGeometry.createShape());
 		shapes.add(squareGeometry.createShape());
 		shapes.add(triangleGeometry.createShape());
 		for (Shape s : shapes) {

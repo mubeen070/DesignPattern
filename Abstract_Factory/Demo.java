@@ -15,6 +15,7 @@ public class Demo {
       // call draw method of Shape Triangle
       shape3.draw();
       System.out.println();
+
       // get shape factory
       AbstractFactory shapeFactory1 = FactoryProducer.getFactory("Rounded");
       // get an object of Shape Rectangle
@@ -30,6 +31,7 @@ public class Demo {
       shape6.draw();
 
       System.out.println();
+
       // get shape factory
       AbstractFactory shapeFactory2 = FactoryProducer.getFactory("bordered");
       Shape shape7 = shapeFactory2.getShape("SINGLE BORDERED TRIANGLE");
