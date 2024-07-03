@@ -1,4 +1,4 @@
-public class ECommerceApp {
+public class Shopify {
     public static void main(String[] args) {
         // Singleton
         Configuration config = Configuration.getInstance();
@@ -7,7 +7,9 @@ public class ECommerceApp {
         // Factory Method
         UserFactory userFactory = new UserFactory();
         User admin = userFactory.createUser("Admin");
+User special=userFactory.createUser("special");
         admin.displayRole();
+        special.displayRole();
 
         // Observer
         NotificationService notificationService = new NotificationService();
@@ -23,14 +25,25 @@ public class ECommerceApp {
         interpreter.interpret("buy Laptop", context);
         interpreter.interpret("sell Phone", context);
 
-        System.out.println("Orders: " + context.getOrders());
+        System.out.println("Interpreted Orders: " + context.getOrders());
 
         // Decorator
-        Product giftWrappedProduct = new GiftWrap(new BasicProduct("Smartphone", 700.00));
+        Product giftWrappedProduct = new GiftWrap(new BasicProduct("Smartphone", 700.00,100));
+        Product extendedw=new ExtendedWarranty(new BasicProduct("Smartphone with extended warranty", 1000,100));
+        
         System.out.println(giftWrappedProduct.getDescription() + " costs $" + giftWrappedProduct.getCost());
+        System.out.println(extendedw.getDescription() + " costs $" + extendedw.extendedPrice());
 
         // Facade
-        ECommerceFacade facade = new ECommerceFacade();
+        ECommerceFacade facade = new ECommerceFacade(context);
         facade.placeOrder("Tablet", "Credit Card");
+        facade.placeOrder("Laptop", "PayPal");
+        facade.placeOrder("Phone", "Cash");
+
+        // Display all orders
+        System.out.println("Placed Orders:");
+        for (Order order : facade.getOrders()) {
+            System.out.println(order);
+        }
     }
 }

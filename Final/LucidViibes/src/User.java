@@ -1,22 +1,34 @@
-abstract class User {
+interface User {
     public abstract void displayRole();
 }
 
-class Admin extends User {
+class Admin implements User {
     public void displayRole() {
         System.out.println("I am an Admin.");
     }
 }
 
-class Seller extends User {
+class Seller implements User {
     public void displayRole() {
         System.out.println("I am a Seller.");
     }
 }
 
-class Buyer extends User {
+class Buyer implements User {
     public void displayRole() {
         System.out.println("I am a Buyer.");
+    }
+}
+
+class Visitor implements User {
+    public void displayRole() {
+        System.out.println("I am a Visitor.");
+    }
+}
+
+class special implements User {
+    public void displayRole() {
+        System.out.println("I am a special user");
     }
 }
 
@@ -28,6 +40,10 @@ class UserFactory {
             return new Seller();
         } else if (type.equals("Buyer")) {
             return new Buyer();
+        } else if (type.equals("Visitor")) {
+            return new Visitor();
+        } else if (type.equals("special")) {
+            return new special();
         }
         return null;
     }

@@ -13,7 +13,7 @@ class BuyExpression implements Expression {
 
     @Override
     public void interpret(OrderContext context) {
-        context.addOrder("Buying " + product);
+        context.addOrder(new Order(product, "Buy"));
     }
 }
 
@@ -26,23 +26,23 @@ class SellExpression implements Expression {
 
     @Override
     public void interpret(OrderContext context) {
-        context.addOrder("Selling " + product);
+        context.addOrder(new Order(product, "Sell"));
     }
 }
 
 class OrderContext {
-    private List<String> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
-    public void addOrder(String order) {
+    public void addOrder(Order order) {
         orders.add(order);
     }
 
-    public ArrayList<String> getOrders() {
-        return (ArrayList<String>) orders;
+    public List<Order> getOrders() {
+        return orders;
     }
 }
 
-class OrderInterpreter {
+public class OrderInterpreter {
     public void interpret(String command, OrderContext context) {
         String[] parts = command.split(" ");
         String action = parts[0];

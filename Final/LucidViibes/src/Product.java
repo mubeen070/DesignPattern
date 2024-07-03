@@ -2,15 +2,18 @@ interface Product {
     String getDescription();
 
     double getCost();
+    double extendedPrice();
 }
 
 class BasicProduct implements Product {
     private String name;
-    private double price;
+    private double nprice;
+    private double exprice;
 
-    public BasicProduct(String name, double price) {
+    public BasicProduct(String name, double nprice, double eprice) {
         this.name = name;
-        this.price = price;
+        this.nprice = nprice;
+        this.exprice=eprice;
     }
 
     @Override
@@ -20,8 +23,14 @@ class BasicProduct implements Product {
 
     @Override
     public double getCost() {
-        return price;
+        return nprice;
     }
+    @Override
+    public double extendedPrice()
+    {
+        return nprice+exprice;
+    }
+
 }
 
 abstract class ProductDecorator implements Product {
@@ -37,6 +46,11 @@ abstract class ProductDecorator implements Product {
 
     public double getCost() {
         return decoratedProduct.getCost();
+    }
+
+    public double extendedPrice()
+    {
+        return decoratedProduct.extendedPrice();
     }
 }
 
@@ -67,3 +81,25 @@ class ExtendedWarranty extends ProductDecorator {
         return decoratedProduct.getCost() + 20.00;
     }
 }
+class CombinedPrice extends ProductDecorator
+{
+    public CombinedPrice(Product decoratedProduct)
+    {
+        super(decoratedProduct);
+
+    }
+    public String getDescription()
+        {
+            return decoratedProduct.getDescription();
+        }
+    public double getCost()
+    {
+        return decoratedProduct.getCost();
+    }
+    public double extendedPrice()
+    {
+        return decoratedProduct.extendedPrice();
+    }
+    
+}
+
